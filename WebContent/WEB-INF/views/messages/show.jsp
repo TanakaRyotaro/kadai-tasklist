@@ -3,7 +3,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:import url="../layout/app.jsp">
     <c:param name="content">
-
+     <c:choose>
+      <c:when test="${task != null}">
         <h2>id : ${task.id} のメッセージ詳細ページ</h2>
 
         <p>メッセージ：<c:out value="${task.content}" /></p>
@@ -12,6 +13,10 @@
 
         <p><a href="${pageContext.request.contextPath}/index">一覧に戻る</a></p>
         <p><a href="${pageContext.request.contextPath}/edit?id=${task.id}">このメッセージを編集する</a></p>
-
+      </c:when>
+            <c:otherwise>
+                <h2>お探しのデータは見つかりませんでした。</h2>
+            </c:otherwise>
+     </c:choose>
     </c:param>
 </c:import>
