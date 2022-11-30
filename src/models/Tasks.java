@@ -1,4 +1,4 @@
-package models; //DTOになるクラス
+package models;
 
 import java.sql.Timestamp;
 
@@ -15,18 +15,15 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(
         name = "getAllMessages",
-        query = "SELECT m FROM Message AS m ORDER BY m.id DESC"
+        query = "SELECT m FROM Tasks AS m ORDER BY m.id DESC"
     )
 })
-@Table(name = "messages")
-public class Message {
+@Table(name = "Tasks")
+public class Tasks {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Column(name = "title", length = 255, nullable = false)
-    private String title;
 
     @Column(name = "content", length = 255, nullable = false)
     private String content;
@@ -43,14 +40,6 @@ public class Message {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getContent() {
